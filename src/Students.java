@@ -94,10 +94,5 @@ public class Students {
                 ", nameTeacher='" + nameTeacher + '\'' +
                 '}';
     }
-    class Employ extends Students{
 
-        public Employ(int id_studenta, String fam, String name, int groupa, String department) {
-            super(id_studenta, fam, name, groupa, department);
-        }
-    }
 }
