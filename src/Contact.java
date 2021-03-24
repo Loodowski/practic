@@ -51,4 +51,10 @@ public class Contact {
                 ", address=" + address +
                 '}';
     }
+    class Employer extends Contact{
+
+        public Employer(String firstName, String lastName, int address) {
+            super(firstName, lastName, address);
+        }
+    }
 }

@@ -61,4 +61,10 @@ public class Order {
                 ", type=" + type +
                 '}';
     }
+    class Employee extends Order{
+
+        public Employee(int id, String name, String courier) {
+            super(id, name, courier);
+        }
+    }
 }
