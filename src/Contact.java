@@ -1,8 +1,10 @@
-public class Contact {
+import java.io.*;
+
+public class Contact implements Serializable{
     private int id;
     private String firstName;
     private String lastName;
-    private int address;
+    private String address;
 
     public String getFirstName() {
         return firstName;
@@ -20,11 +22,11 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public int getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(int address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -36,7 +38,7 @@ public class Contact {
         this.id = id;
     }
 
-    public Contact(String firstName, String lastName, int address) {
+    public Contact(String firstName, String lastName, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -51,10 +53,11 @@ public class Contact {
                 ", address=" + address +
                 '}';
     }
-    class Employer extends Contact{
+    class Contacts extends Contact{
 
-        public Employer(String firstName, String lastName, int address) {
+        public Contacts(String firstName, String lastName, String address) {
             super(firstName, lastName, address);
         }
     }
+
 }

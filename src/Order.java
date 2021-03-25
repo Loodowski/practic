@@ -1,4 +1,6 @@
-public class Order {
+import java.io.*;
+
+public class Order implements Serializable{
     private int id;
     private String name;
     private String courier;
@@ -60,6 +62,12 @@ public class Order {
                 ", dateTime='" + dateTime + '\'' +
                 ", type=" + type +
                 '}';
+    }
+    class Orders extends Order{
+
+        public Orders(int id, String name, String courier) {
+            super(id, name, courier);
+        }
     }
 
 }

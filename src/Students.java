@@ -1,4 +1,6 @@
-public class Students {
+import java.io.*;
+
+public class Students implements  Serializable {
     private int id_studenta;
     private String fam;
     private String name;
@@ -15,7 +17,6 @@ public class Students {
         this.groupa = groupa;
         this.department = department;
     }
-
 
     public int getId_studenta() {
         return id_studenta;
@@ -93,6 +94,12 @@ public class Students {
                 ", mark=" + mark +
                 ", nameTeacher='" + nameTeacher + '\'' +
                 '}';
+    }
+    class Student extends Students{
+
+        public Student(int id_studenta, String fam, String name, int groupa, String department) {
+            super(id_studenta, fam, name, groupa, department);
+        }
     }
 
 }
