@@ -15,7 +15,7 @@ public class Test {
         orders.setType(Integer.parseInt(in.nextLine()));
         System.out.println(orders);
 
-        System.out.println("Enter: id, lastname, name, group and department, disciplin, mark and teacher name");
+        System.out.println("Enter: id, lastname, name, group, department, disciplin, mark and teacher name");
         Students student = new Students(Integer.parseInt(in.nextLine()),in.nextLine(),in.nextLine(),Integer.parseInt(in.nextLine()),in.nextLine());
         student.setDiscipline(in.nextLine());
         student.setMark((int) Double.parseDouble(in.nextLine()));
@@ -24,15 +24,15 @@ public class Test {
         in.close();
 
         try {
-            FileOutputStream fos = new FileOutputStream("FileWithText.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            FileOutputStream fileIn = new FileOutputStream("FileWithText.txt");
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileIn);
 
-            oos.writeObject(contacts);
-            oos.writeObject(orders);
-            oos.writeObject(student);
+            objectOut.writeObject(contacts);
+            objectOut.writeObject(orders);
+            objectOut.writeObject(student);
 
-            oos.close();
-        } catch (IOException e) {
+            objectOut.close();
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
