@@ -4,7 +4,15 @@ import java.util.Scanner;
 public class Test {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter: name, lastName, adress, and id");
+        ContactColect ccol = new ContactColect();
+        for(int i = 0; i<=2; i++) ccol.addC();
+        ccol.sortName();
+        System.out.println(ccol);
+        ccol.sortID();
+        System.out.println(ccol);
+        ccol.sortAdress();
+        System.out.println(ccol);
+       /* System.out.println("Enter: name, lastName, adress, and id");
         Contact contacts = new Contact(in.nextLine(),in.nextLine(),in.nextLine());
         contacts.setId(Integer.parseInt(in.nextLine()));
         System.out.println(contacts);
@@ -34,7 +42,7 @@ public class Test {
             objectOut.close();
         }catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
 
