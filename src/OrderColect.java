@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class OrderColect {
+public class OrderColect implements Serializable {
     private ArrayList<Order> oCol = new ArrayList<Order>();
 
     public void addO(){
@@ -14,11 +15,6 @@ public class OrderColect {
         orders.setType(Integer.parseInt(in.nextLine()));
 
         oCol.add(orders);
-    }
-
-
-    public void sortName(){
-        Collections.sort(oCol, new SortName());
     }
 
     public void sortID(){

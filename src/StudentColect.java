@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class StudentColect {
+public class StudentColect implements Serializable {
     private ArrayList<Students> sCol = new ArrayList<Students>();
 
     public void addS(){
@@ -21,9 +22,6 @@ public class StudentColect {
         Collections.sort(sCol, new SortName());
     }
 
-    public void sortID(){
-        Collections.sort(sCol, new SortID());
-    }
 
     @Override
     public String toString() {

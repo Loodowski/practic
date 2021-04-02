@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class ContactColect {
+public class ContactColect implements Serializable {
     private ArrayList<Contact> cCol = new ArrayList<Contact>();
 
     public void addC() {
@@ -12,14 +13,6 @@ public class ContactColect {
         contacts.setId(Integer.parseInt(in.nextLine()));
 
         cCol.add(contacts);
-    }
-
-    public void sortName(){
-        Collections.sort(cCol, new SortName());
-    }
-
-    public void sortID(){
-        Collections.sort(cCol, new SortID());
     }
 
     public void sortAdress(){

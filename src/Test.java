@@ -1,48 +1,99 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Test {
-    public static void main(String[] args) {
+public class Test implements Serializable {
+    public static void main(String[] args) throws Exception{
+
+        ContactColect cCol = new ContactColect();
+        OrderColect oCol = new OrderColect();
+        StudentColect sCol = new StudentColect();
+
         Scanner in = new Scanner(System.in);
-        ContactColect ccol = new ContactColect();
-        for(int i = 0; i<=2; i++) ccol.addC();
-        ccol.sortName();
-        System.out.println(ccol);
-        ccol.sortID();
-        System.out.println(ccol);
-        ccol.sortAdress();
-        System.out.println(ccol);
-       /* System.out.println("Enter: name, lastName, adress, and id");
-        Contact contacts = new Contact(in.nextLine(),in.nextLine(),in.nextLine());
-        contacts.setId(Integer.parseInt(in.nextLine()));
-        System.out.println(contacts);
 
-        System.out.println("Enter: id, name of order, courier's name, date and type");
-        Order orders = new Order(Integer.parseInt(in.nextLine()), in.nextLine(), in.nextLine());
-        orders.setDateTime(in.nextLine());
-        orders.setType(Integer.parseInt(in.nextLine()));
-        System.out.println(orders);
+        int end = 0;
+        int ch;
+        int chCol;
+        while(end == 0){
+            System.out.println("Choose:\n"+
+                    "1 - add a collections\n"+
+                    "2 - sort a collections\n"+
+                    "3 - display collections\n"+
+                    "4 - write to file\n"+
+                    "5 - get from file\n"+
+                    "0 - end");
+            ch = in.nextInt();
+            switch (ch){
+                case 1:
+                    System.out.println("Choose a collection\n"+
+                            "1 - Contact\n"+
+                            "2 - Order\n"+
+                            "3 - Student");
+                    chCol = in.nextInt();
+                    if (chCol == 1)  cCol.addC();
+                    else if (chCol == 2) oCol.addO();
+                    else if (chCol == 3) sCol.addS();
+                    break;
+                case 2:
+                    System.out.println("Choose a collection to sort\n" +
+                            "1 - Sort contact by adress\n"+
+                            "2 - Sort order by ID\n"+
+                            "3 - Sort student by name");
+                    chCol = in.nextInt();
+                    if (chCol == 1) {
+                        cCol.sortAdress();
+                        System.out.println(cCol);
+                    }
+                    else if (chCol == 2) {
+                        oCol.sortID();
+                        System.out.println(oCol);
+                    }
+                    else if (chCol == 3){
+                        sCol.sortName();
+                        System.out.println(sCol);
+                    }
+                    break;
+                case 3:
+                    System.out.println(cCol);
+                    System.out.println(oCol);
+                    System.out.println(sCol);
+                    break;
+                case 4:
+                    try {
+                        FileOutputStream fileOut = new FileOutputStream("FileWithText.bin");
+                        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 
-        System.out.println("Enter: id, lastname, name, group, department, disciplin, mark and teacher name");
-        Students student = new Students(Integer.parseInt(in.nextLine()),in.nextLine(),in.nextLine(),Integer.parseInt(in.nextLine()),in.nextLine());
-        student.setDiscipline(in.nextLine());
-        student.setMark((int) Double.parseDouble(in.nextLine()));
-        student.setNameTeacher(in.nextLine());
-        System.out.println(student);
-        in.close();
+                        objectOut.writeObject(cCol);
+                        objectOut.writeObject(oCol);
+                        objectOut.writeObject(sCol);
 
-        try {
-            FileOutputStream fileIn = new FileOutputStream("FileWithText.txt");
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileIn);
+                        objectOut.close();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 5:
+                    try{
+                        FileInputStream fileIn = new FileInputStream("FileWithText.bin");
+                        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
-            objectOut.writeObject(contacts);
-            objectOut.writeObject(orders);
-            objectOut.writeObject(student);
+                        ContactColect contactColect1 = (ContactColect) objectIn.readObject();
+                        OrderColect orderColect1 = (OrderColect) objectIn.readObject();
+                        StudentColect studentColect1 = (StudentColect) objectIn.readObject();
 
-            objectOut.close();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }*/
+                        System.out.println(contactColect1);
+                        System.out.println(orderColect1);
+                        System.out.println(studentColect1);
+
+                        objectIn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 0:
+                    end = 1;
+                    break;
+            }
+        }
     }
 }
 

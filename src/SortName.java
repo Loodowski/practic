@@ -1,8 +1,8 @@
 import java.util.Comparator;
 
-public class SortName implements Comparator<Contact> {
+public class SortName implements Comparator<Students> {
     @Override
-    public int compare(Contact contact, Contact contact2){
-        return contact.getFirstName().compareTo(contact2.getFirstName());
+    public int compare(Students students, Students students2){
+        return students.getName().compareTo(students2.getName());
     }
 }
